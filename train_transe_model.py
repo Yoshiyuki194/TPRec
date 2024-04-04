@@ -14,7 +14,7 @@ import torch.optim as optim
 from utils import *
 from data_utils import AmazonDataset, AmazonDataLoader
 from transe_model import KnowledgeEmbedding
-
+from timeUtils import *
 
 logger = None
 

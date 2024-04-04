@@ -10,6 +10,7 @@ import scipy.sparse as sp
 from sklearn.feature_extraction.text import TfidfTransformer
 import torch
 from datetime import date
+from timeUtils import *
 
 
 # Dataset names.
@@ -53,55 +54,55 @@ LABELS = {
 
 
 # Entities
-USER = 'user'
-PRODUCT = 'product'
-WORD = 'word'
-RPRODUCT = 'related_product'
-BRAND = 'brand'
-CATEGORY = 'category'
+# USER = 'user'
+# PRODUCT = 'product'
+# WORD = 'word'
+# RPRODUCT = 'related_product'
+# BRAND = 'brand'
+# CATEGORY = 'category'
 
 
 # Relations
-PURCHASE = 'purchase'
-MENTION = 'mentions'
-DESCRIBED_AS = 'described_as'
-PRODUCED_BY = 'produced_by'
-BELONG_TO = 'belongs_to'
-ALSO_BOUGHT = 'also_bought'
-ALSO_VIEWED = 'also_viewed'
-BOUGHT_TOGETHER = 'bought_together'
-SELF_LOOP = 'self_loop'  # only for kg env
+# PURCHASE = 'purchase'
+# MENTION = 'mentions'
+# DESCRIBED_AS = 'described_as'
+# PRODUCED_BY = 'produced_by'
+# BELONG_TO = 'belongs_to'
+# ALSO_BOUGHT = 'also_bought'
+# ALSO_VIEWED = 'also_viewed'
+# BOUGHT_TOGETHER = 'bought_together'
+# SELF_LOOP = 'self_loop'  # only for kg env
 
-KG_RELATION = {
-    USER: {
-        PURCHASE: PRODUCT,
-        MENTION: WORD,
-    },
-    WORD: {
-        MENTION: USER,
-        DESCRIBED_AS: PRODUCT,
-    },
-    PRODUCT: {
-        PURCHASE: USER,
-        DESCRIBED_AS: WORD,
-        PRODUCED_BY: BRAND,
-        BELONG_TO: CATEGORY,
-        ALSO_BOUGHT: RPRODUCT,
-        ALSO_VIEWED: RPRODUCT,
-        BOUGHT_TOGETHER: RPRODUCT,
-    },
-    BRAND: {
-        PRODUCED_BY: PRODUCT,
-    },
-    CATEGORY: {
-        BELONG_TO: PRODUCT,
-    },
-    RPRODUCT: {
-        ALSO_BOUGHT: PRODUCT,
-        ALSO_VIEWED: PRODUCT,
-        BOUGHT_TOGETHER: PRODUCT,
-    }
-}
+# KG_RELATION = {
+#     USER: {
+#         PURCHASE: PRODUCT,
+#         MENTION: WORD,
+#     },
+#     WORD: {
+#         MENTION: USER,
+#         DESCRIBED_AS: PRODUCT,
+#     },
+#     PRODUCT: {
+#         PURCHASE: USER,
+#         DESCRIBED_AS: WORD,
+#         PRODUCED_BY: BRAND,
+#         BELONG_TO: CATEGORY,
+#         ALSO_BOUGHT: RPRODUCT,
+#         ALSO_VIEWED: RPRODUCT,
+#         BOUGHT_TOGETHER: RPRODUCT,
+#     },
+#     BRAND: {
+#         PRODUCED_BY: PRODUCT,
+#     },
+#     CATEGORY: {
+#         BELONG_TO: PRODUCT,
+#     },
+#     RPRODUCT: {
+#         ALSO_BOUGHT: PRODUCT,
+#         ALSO_VIEWED: PRODUCT,
+#         BOUGHT_TOGETHER: PRODUCT,
+#     }
+# }
 '''
 #======================================================
 '''

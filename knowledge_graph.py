@@ -16,6 +16,7 @@ import torch
 
 from utils import *
 from data_utils import AmazonDataset
+from timeUtils import *
 
 
 class KnowledgeGraph(object):

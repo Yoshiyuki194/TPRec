@@ -10,6 +10,7 @@ from datetime import datetime
 
 from knowledge_graph import KnowledgeGraph
 from utils import *
+from timeUtils import *
 
 def load_clus_weight(dataset, usage='train'):
     uc_file = TMP_DIR[dataset] + '/' + usage + '_user_clus_weight.pkl'
@@ -97,7 +98,7 @@ class BatchKGEnvironment(object):
                         _pattern = extend_pattern(pattern, pos)
                     elif count > 1:
                         _pattern = second_e_pattern(pattern, _pattern, pos)
-            if count is not 0:
+            if count != 0:
                 pattern = _pattern
             for pat in pattern:
                 self.patterns.append(tuple(pat))
@@ -156,7 +157,7 @@ class BatchKGEnvironment(object):
         scores = []
         ff = 1
         for clus_wt in self.clus_weight[path[0][-1]]:
-            if ff is 0:
+            if ff == 0:
                 purchase_emd += self.embeds[PURCHASE[clus_wt]][0] * self.clus_weight[path[0][-1]][clus_wt]
                 mention_emd += self.embeds[MENTION[clus_wt]][0] * self.clus_weight[path[0][-1]][clus_wt]
             else:
@@ -233,7 +234,7 @@ class BatchKGEnvironment(object):
             # get uid purchase emd
             ff = 1
             for clus_wt in self.clus_weight[uid]:
-                if ff is 0:
+                if ff == 0:
                     purchase_emd += self.embeds[PURCHASE[clus_wt]][0] * self.clus_weight[uid][clus_wt]
                 else:
                     ff = 0
