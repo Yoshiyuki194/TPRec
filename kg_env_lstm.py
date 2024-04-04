@@ -10,7 +10,6 @@ from datetime import datetime
 
 from knowledge_graph import KnowledgeGraph
 from utils import *
-from timeUtils import *
 
 def load_clus_weight(dataset, usage='train'):
     uc_file = TMP_DIR[dataset] + '/' + usage + '_user_clus_weight.pkl'

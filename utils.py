@@ -10,7 +10,6 @@ import scipy.sparse as sp
 from sklearn.feature_extraction.text import TfidfTransformer
 import torch
 from datetime import date
-from timeUtils import *
 
 
 # Dataset names.

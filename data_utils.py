@@ -7,7 +7,6 @@ import pickle
 from easydict import EasyDict as edict
 import random
 from utils import *
-from timeUtils import *
 
 class AmazonDataset(object):
     """This class is used to load data files and save in the instance."""

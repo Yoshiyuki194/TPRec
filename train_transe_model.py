@@ -12,7 +12,6 @@ import torch.nn as nn
 import torch.optim as optim
 
 from utils import *
-from timeUtils import *
 from data_utils import AmazonDataset, AmazonDataLoader
 from transe_model import KnowledgeEmbedding
 
