@@ -47,7 +47,7 @@ class ActorCritic(nn.Module):
         x = F.dropout(F.elu(out), p=0.5)
         '''Actor -> Prob'''
         actor_logits = self.actor(x) # [32, 256] * [256, 250 + 1] -> [32, 251]
-        actor_logits[1 - act_mask] = -999999.0 
+        actor_logits[~act_mask.bool()] = -999999.0 
         act_probs = F.softmax(actor_logits, dim=-1)  # Tensor of [bs, act_dim]
         ''' Critic -> Value '''
         # [32, 256] * [256, 1] -> [32, 1]

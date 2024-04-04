@@ -157,7 +157,7 @@ def evaluate_paths(path_file, train_labels, test_labels):
     for userID in range(len(clus_weight)):
         ff = 1
         for clus_wt in clus_weight[userID]:
-            if ff is 0:
+            if ff == 0:
                 purchase_emd += embeds[PURCHASE[clus_wt]][0] * clus_weight[userID][clus_wt]
             else:
                 ff = 0
