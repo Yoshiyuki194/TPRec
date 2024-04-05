@@ -124,7 +124,7 @@ def predict_paths(policy_file, path_file, args):
     print('Predicting paths...')
     env = BatchKGEnvironment(args.dataset, args.max_acts, max_path_len=args.max_path_len, state_history=args.state_history, mode='test')
     pretrain_sd = torch.load(policy_file)
-    model = ActorCritic(env.state_dim, env.act_dim, gamma=args.gamma, hidden_sizes=args.hidden).to(args.device)
+    model = ActorCritic(env.state_dim, pretrain_sd['actor.weight'].shape[0], gamma=args.gamma, hidden_sizes=args.hidden).to(args.device)
     model_sd = model.state_dict()
     model_sd.update(pretrain_sd)
     model.load_state_dict(model_sd)
