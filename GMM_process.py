@@ -103,6 +103,8 @@ class ExtractTime4Concate(object):
 
 
     def _load_file(self, filename):
+        if not filename.endswith('.gz'):
+            raise ValueError(f"File {filename} is not a gzipped file")
         with gzip.open(self.data_dir + filename, 'r') as f:
             # In Python 3, must use decode() to convert bytes to string!
             return [line.decode('utf-8').strip() for line in f]
