@@ -130,7 +130,7 @@ def main():
     parser.add_argument('--embed_size', type=int, default=100, help='knowledge embedding size.')
     parser.add_argument('--num_neg_samples', type=int, default=5, help='number of negative samples.')
     parser.add_argument('--steps_per_checkpoint', type=int, default=200, help='Number of steps for checkpoint.')
-    parser.add_argument('--train', type=bool, default=True, help='train or not.')
+    parser.add_argument('--train', type=int, default=1, help='train or not.')
     args = parser.parse_args()
 
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
