@@ -254,9 +254,8 @@ def save_embed(dataset, embed):
     pickle.dump(embed, open(embed_file, 'wb'))
 
 
-def load_embed(dataset, use_transe=True):
-    embed_file = '{}/transe_embed.pkl'.format(TMP_DIR[dataset]) if use_transe \
-        else '{}/init_embedding/transe_embed.pkl'.format(TMP_DIR[dataset])
+def load_embed(dataset):
+    embed_file = '{}/transe_embed.pkl'.format(TMP_DIR[dataset])
     print('Load embedding:', embed_file)
     embed = pickle.load(open(embed_file, 'rb'))
     return embed

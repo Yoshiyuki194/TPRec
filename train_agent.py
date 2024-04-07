@@ -136,7 +136,7 @@ class ACDataLoader(object):
 
 
 def train(args):
-    env = BatchKGEnvironment(args.dataset, args.max_acts, max_path_len=args.max_path_len, state_history=args.state_history, use_transe=args.use_transe)
+    env = BatchKGEnvironment(args.dataset, args.max_acts, max_path_len=args.max_path_len, state_history=args.state_history)
     uids = list(env.kg(USER).keys())
     
     dataloader = ACDataLoader(uids, args.batch_size)
@@ -212,7 +212,6 @@ def main():
     parser.add_argument('--act_dropout', type=float, default=0.5, help='action dropout rate.')
     parser.add_argument('--state_history', type=int, default=1, help='state history length')
     parser.add_argument('--hidden', type=int, nargs='*', default=[512, 256], help='number of samples')
-    parser.add_argument('--use_transe', type=int, default=1, help='Whether to use TransE model')
     args = parser.parse_args()
 
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
