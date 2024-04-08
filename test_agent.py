@@ -122,7 +122,7 @@ def batch_beam_search(env, model, uids, device, topk=[25, 5, 1]):
 def predict_paths(policy_file, path_file, args):
         
     print('Predicting paths...')
-    env = BatchKGEnvironment(args.dataset, args.max_acts, max_path_len=args.max_path_len, state_history=args.state_history, mode='test')
+    env = BatchKGEnvironment(args.dataset, args.max_acts, max_path_len=args.max_path_len, state_history=args.state_history, mode='test', use_transe=args.use_transe)
     pretrain_sd = torch.load(policy_file)
     # Ensure that the act_dim parameter matches the one used in the checkpoint
     correct_act_dim = pretrain_sd['actor.weight'].shape[0]
@@ -256,6 +256,7 @@ if __name__ == '__main__':
     parser.add_argument('--topk', type=int, nargs='*', default=[25, 5, 1], help='number of samples')
     parser.add_argument('--run_path', type=boolean, default=True, help='Generate predicted path? (takes long time)')
     parser.add_argument('--run_eval', type=boolean, default=True, help='Run evaluation?')
+    parser.add_argument('--use_transe', type=boolean, default=True, help='Use TransE model?')
     args = parser.parse_args()
 
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
